@@ -17,16 +17,14 @@ namespace Composicao
             // PROCESSAMENTO
             Aluno aluno = new Aluno(nome);
 
-            bool sair = false;
-            do
+            while (true)
             {
                 // ENTRADA
                 Console.Write("Disciplina: ");
                 string nomeDisciplina = Console.ReadLine();
                 if (nomeDisciplina == "")
                 {
-                    sair = true;
-                    continue;
+                    break;
                 }
 
                 Console.Write("Prova 1: ");
@@ -38,18 +36,16 @@ namespace Composicao
                 // PROCESSAMENTO
                 Disciplina disciplina = new Disciplina(nomeDisciplina, p1, p2);
                 aluno.Guarde(disciplina);
-            } while (!sair);
+            }
 
-            sair = false;
-            do
+            while (true)
             {
                 // ENTRADA
                 Console.Write("Qual disciplina você quer saber? ");
                 string nomeDisciplina = Console.ReadLine();
                 if (nomeDisciplina == "")
                 {
-                    sair = true;
-                    continue;
+                    break;
                 }
 
                 // PROCESSAMENTO
@@ -59,7 +55,7 @@ namespace Composicao
                 // SAÍDA
                 Console.WriteLine("O aluno {0} {1} na disciplina {2} com média {3}.",
                     aluno.Nome, aprovado ? "passou" : "não passou", nomeDisciplina, media);
-            } while (!sair);
+            }
         }
     }
 }
