@@ -28,28 +28,44 @@ namespace Composicao
 
         public double GetMedia(string nomeDisciplina)
         {
-            foreach(Disciplina disciplina in disciplinas)
+            double resultado = 0;
+
+            Disciplina disciplina = Encontra(nomeDisciplina);
+            if (disciplina != null)
             {
-                if (disciplina.Nome == nomeDisciplina)
-                {
-                    return disciplina.Media;
-                }
+                resultado = disciplina.Media;
             }
 
-            return 0;
+            return resultado;
         }
 
         public bool GetAprovado(string nomeDisciplina)
         {
+            bool resultado = false;
+
+            Disciplina disciplina = Encontra(nomeDisciplina);
+            if (disciplina != null)
+            {
+                resultado = disciplina.Aprovado;
+            }
+
+            return resultado;
+        }
+
+        private Disciplina Encontra(string nomeDisciplina)
+        {
+            Disciplina resultado = null;
+
             foreach (Disciplina disciplina in disciplinas)
             {
                 if (disciplina.Nome == nomeDisciplina)
                 {
-                    return disciplina.Aprovado;
+                    resultado = disciplina;
+                    break;
                 }
             }
 
-            return false;
+            return resultado;
         }
     }
 }
